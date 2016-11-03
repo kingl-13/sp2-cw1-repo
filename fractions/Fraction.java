@@ -20,6 +20,8 @@ public class Fraction {
 
     /* Insert your instance variables here. */
 
+	private BigInteger numerator;
+	private BigInteger denominator;
     
     /**
      * Constructs a Fraction taking the value of its parameter.
@@ -27,7 +29,9 @@ public class Fraction {
      * @param val  non-null; the value the Fraction is supposed to take
      */
     public Fraction(BigInteger val) {
-        // TODO Auto-generated method stub
+
+    	this.numerator = val;
+    	this.denominator = BigInteger.valueOf(1) ;
     }
 
     /**
@@ -37,6 +41,8 @@ public class Fraction {
      */
     public Fraction(long val) {
         // TODO Auto-generated method stub
+    	this.numerator = BigInteger.valueOf(val);
+    	this.denominator = BigInteger.valueOf(1) ;
     }
 
     /**
@@ -48,6 +54,8 @@ public class Fraction {
      */
     public Fraction(BigInteger numerator, BigInteger denominator) {
         // TODO Auto-generated method stub
+    	this.numerator = numerator;
+    	this.denominator = denominator;
     }
 
     /**
@@ -58,7 +66,9 @@ public class Fraction {
      * @param denominator  the denominator of the Fraction
      */
     public Fraction(long numerator, long denominator) {
-        // TODO Auto-generated method stub
+
+    	this.numerator = BigInteger.valueOf(numerator);
+    	this.denominator = BigInteger.valueOf(denominator);
     }
 
     /**
