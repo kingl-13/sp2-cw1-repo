@@ -59,6 +59,8 @@ public class FractionMainTest {
         System.out.println("EXPECTED: " + "(-11 / 3)");
 
         System.out.println("(04) multiply:");
+        System.out.println(allFractions[2]);
+        System.out.println(allFractions[6]);
         System.out.println("ACTUAL:   " + allFractions[2].multiply(allFractions[6]));
         System.out.println("EXPECTED: " + "(-1 / 246913578024691357802469135780)");
 
