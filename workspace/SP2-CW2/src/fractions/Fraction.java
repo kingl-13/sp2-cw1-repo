@@ -104,12 +104,32 @@ public class Fraction {
      * @return this - val
      */
     public Fraction subtract(Fraction val) {
-        Fraction temp = val;
-        temp.numerator = this.numerator.subtract(val.numerator);
-        temp.denominator = this.denominator.subtract(val.denominator);
-
+    	Fraction tempThis = this;
+    	Fraction tempVal = val;
+    	if(!tempThis.denominator.equals(tempVal.denominator)){
+    		BigInteger common = tempThis.denominator.gcd(tempVal.denominator);
+    		tempVal = lcm(tempVal,common);
+    		tempThis = lcm(tempThis,common);
+    	}
+    	
+        tempVal.numerator = tempThis.numerator.subtract(tempVal.numerator);
         
-        return temp;
+        
+        return tempVal;
+    }
+    /**
+     * Returns the lowest common denominator
+     * @param val
+     * @return  
+     */
+    public Fraction lcm(Fraction val, BigInteger common){
+    	Fraction temp = val;
+    	while(!temp.denominator.equals(common)){
+    		temp.denominator = temp.denominator.add(temp.denominator);
+    		temp.numerator = temp.numerator.add(temp.numerator);
+    	}
+    	return temp;
+    	
     }
 
     /**
@@ -122,6 +142,10 @@ public class Fraction {
     public Fraction multiply(Fraction val) {
     	
     	Fraction temp = val;
+    	/*while(temp.denominator.compareTo(this.denominator)){
+    		
+    	}
+    	*/ 
     	temp.numerator = this.numerator.multiply(val.numerator);
     	temp.denominator = this.denominator.multiply(val.denominator);
     	return temp;
