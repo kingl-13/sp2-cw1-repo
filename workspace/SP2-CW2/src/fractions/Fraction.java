@@ -79,7 +79,7 @@ public class Fraction {
      * @return this + val
      */
     public Fraction add(Fraction val) {
-        Fraction temp = val;
+    	Fraction temp = new Fraction(0,0);
         temp.numerator = (this.numerator.multiply(val.denominator)).add(this.denominator.multiply(val.numerator));
         temp.denominator = this.denominator.multiply(val.denominator);
     	return temp;
@@ -104,30 +104,62 @@ public class Fraction {
      * @return this - val
      */
     public Fraction subtract(Fraction val) {
-    	Fraction tempThis = this;
-    	Fraction tempVal = val;
-    	if(!tempThis.denominator.equals(tempVal.denominator)){
-    		BigInteger common = tempThis.denominator.gcd(tempVal.denominator);
-    		tempVal = lcm(tempVal,common);
-    		tempThis = lcm(tempThis,common);
+    	Fraction tempThis = new Fraction(0,0); //(-2/1)
+    	System.out.println(tempThis);
+    	Fraction tempVal = new Fraction(0,0); // (5/3)
+    	System.out.println(tempVal);
+    	if(!this.denominator.equals(val.denominator)){
+    		tempThis = proper(this, val.denominator); // Immutable variable is also changing???
+        	System.out.println(tempThis);    		
+    		tempVal = proper(val, this.denominator);
+        	System.out.println(tempVal);
     	}
     	
         tempVal.numerator = tempThis.numerator.subtract(tempVal.numerator);
         
         
-        return tempVal;
+        return simplify(tempVal);
     }
     /**
-     * Returns the lowest common denominator
+     *  returns a Fraction that is multiplied by n.
+     * @param val
+     * @param n
+     * @return val * n
+     */
+    public Fraction proper(Fraction val, BigInteger n){
+    	Fraction temp = val;
+    	temp.numerator = temp.numerator.multiply(n);
+    	temp.denominator = temp.denominator.multiply(n);
+    	return temp;
+    }
+    /**
+     *  returns a simplied Fraction
+     * @param val
+     * @return val 
+     */
+    public Fraction simplify(Fraction val){
+    	Fraction temp = val;
+    	BigInteger two = BigInteger.valueOf(2);
+    	while(temp.denominator.mod(two) != BigInteger.ZERO && 
+    			(temp.numerator.mod(two) != BigInteger.ZERO)){
+    		temp.numerator = temp.numerator.divide(two);
+    		temp.denominator = temp.denominator.divide(two);
+    	}
+    	return temp;
+    	
+    }
+    /**
+     * Returns the lowest common denominator between two fractions
      * @param val
      * @return  
      */
     public Fraction lcm(Fraction val, BigInteger common){
     	Fraction temp = val;
-    	while(!temp.denominator.equals(common)){
+    	/**while(!temp.denominator.equals(common)){
     		temp.denominator = temp.denominator.add(temp.denominator);
     		temp.numerator = temp.numerator.add(temp.numerator);
     	}
+    	*/
     	return temp;
     	
     }

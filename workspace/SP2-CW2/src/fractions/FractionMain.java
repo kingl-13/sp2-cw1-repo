@@ -44,43 +44,41 @@ public class FractionMain {
             new Fraction(12,5),   // 2
      
         };
-        
-        System.out.println(allFractions[0]);
 
         System.out.println("(01) add:");
-        System.out.println("ACTUAL:   " + allFractions[0].add(allFractions[1]));
+        System.out.println("ACTUAL:   " + allFractions[0].add(allFractions[1])); // (12/5) + (-1/2)
         System.out.println("EXPECTED: " + "(19 / 10)");
 
         System.out.println("(02) add:");
-        System.out.println("ACTUAL:   " + allFractions[0].add(allFractions[10]));
+        System.out.println("ACTUAL:   " + allFractions[0].add(allFractions[10])); // (12/5) + (-2/1)
         System.out.println("EXPECTED: " + "(2 / 5)");
 
         System.out.println("(03) subtract:");
-        System.out.println("ACTUAL:   " + allFractions[9].subtract(allFractions[4]));
+        System.out.println("ACTUAL:   " + allFractions[9].subtract(allFractions[4])); // (-2/1) - (5/3)
         System.out.println("EXPECTED: " + "(-11 / 3)");
 
         System.out.println("(04) multiply:");
-        System.out.println("ACTUAL:   " + allFractions[2].multiply(allFractions[6]));
+        System.out.println("ACTUAL:   " + allFractions[2].multiply(allFractions[6])); // (1/1234...) * (5/-10)
         System.out.println("EXPECTED: " + "(-1 / 246913578024691357802469135780)");
 
         System.out.println("(05) divide:");
-        System.out.println("ACTUAL:   " + allFractions[0].divide(allFractions[8]));
+        System.out.println("ACTUAL:   " + allFractions[0].divide(allFractions[8])); // (12/5) / (4/2)
         System.out.println("EXPECTED: " + "(6 / 5)");
 
         System.out.println("(06) negate:");
-        System.out.println("ACTUAL:   " + allFractions[6].negate());
+        System.out.println("ACTUAL:   " + allFractions[6].negate()); // (5/-10)
         System.out.println("EXPECTED: " + "(1 / 2)");
 
         System.out.println("(07) negate:");
-        System.out.println("ACTUAL:   " + allFractions[4].negate());
+        System.out.println("ACTUAL:   " + allFractions[4].negate()); // (5/3)
         System.out.println("EXPECTED: " + "(-5 / 3)");
 
         System.out.println("(08) invert:");
-        System.out.println("ACTUAL:   " + allFractions[4].invert());
+        System.out.println("ACTUAL:   " + allFractions[4].invert()); // (5/3)
         System.out.println("EXPECTED: " + "(3 / 5)");
 
         System.out.println("(09) signum:");
-        System.out.println("ACTUAL:   " + allFractions[2].signum());
+        System.out.println("ACTUAL:   " + allFractions[2].signum()); // (1/12345678901234...)
         System.out.println("EXPECTED: " + "1");
 
         System.out.println("(10) signum:");
